@@ -44,7 +44,7 @@ Dependencies
 ------------
 Python 2.7 because it uses [argparse](http://docs.python.org/dev/library/argparse.html)
 
-Twisted/Twisted-Words
+[Twisted/Twisted-Words](https://en.wikipedia.org/wiki/Twisted_(software))
 
 #### To install the dependencies on Ubutu 12.04 ####
 ```
