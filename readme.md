@@ -44,7 +44,7 @@ Dependencies
 ------------
 Python 2.7 due to the use of [argparse](http://docs.python.org/dev/library/argparse.html)
 
-[Twisted](<https://en.wikipedia.org/wiki/Twisted_(software)>)/Twisted Words
+[Twisted](https://en.wikipedia.org/wiki/Twisted_%28software%29)/Twisted Words
 
 #### To install the dependencies on Ubuntu 12.04 ####
 ```
