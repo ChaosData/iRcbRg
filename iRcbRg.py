@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from args import *
 from uri import *
 from chan import *
