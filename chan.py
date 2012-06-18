@@ -1,6 +1,6 @@
 
 def validChan(chan):
-	if(chan.find('\x07') != -1):
+	if( (chan.find('\x07')!=-1) or (chan.find(' ')!=-1) or (chan.find(',')!=-1) or (chan.find(':')!=-1) ):
 		return [False]
 	if(chan[0] not in ['&','#','+','!']):
 		return [True, '#' + chan]
