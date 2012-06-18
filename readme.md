@@ -42,11 +42,11 @@ optional arguments:
 
 Dependencies
 ------------
-Python 2.7 because it uses [argparse](http://docs.python.org/dev/library/argparse.html)
+Python 2.7 due to the use of [argparse](http://docs.python.org/dev/library/argparse.html)
 
-[Twisted/Twisted-Words](https://en.wikipedia.org/wiki/Twisted_(software))
+[Twisted](https://en.wikipedia.org/wiki/Twisted_(software))/Twisted Words
 
-#### To install the dependencies on Ubutu 12.04 ####
+#### To install the dependencies on Ubuntu 12.04 ####
 ```
 sudo apt-get install python-twisted-words
 ```
