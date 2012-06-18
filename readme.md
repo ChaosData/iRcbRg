@@ -1,4 +1,4 @@
-iRcbRg:
+iRcbRg
 ======
 
 ### An IRC to IRC bridge, 'nuff said. ###
@@ -11,7 +11,7 @@ iRcbRg (irk-berg) is used to relay messages between two IRC channels on two diff
 How to use it
 -------------
 ```
-python iRcbRg.py "irc://irc.freenode.net:6667" "#python" "ircs://irc.example.com:6697" "#python"
+$ ./iRcbRg.py "irc://irc.freenode.net:6667" "#python" "ircs://irc.example.com:6697" "#python"
 ```
 Don't forget to read the help.
 ```
@@ -42,5 +42,11 @@ optional arguments:
 
 Dependencies
 ------------
-Python 2.7 - it uses [argparse](http://docs.python.org/dev/library/argparse.html)
-Twisted/Twisted-Words - On Ubuntu 12.04: sudo apt-get install python-twisted-words
+Python 2.7 because it uses [argparse](http://docs.python.org/dev/library/argparse.html)
+
+Twisted/Twisted-Words
+
+#### To install the dependencies on Ubutu 12.04 ####
+```
+sudo apt-get install python-twisted-words
+```
