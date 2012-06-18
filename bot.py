@@ -9,8 +9,10 @@ import time, sys
 
 class BridgeBot(irc.IRCClient):
 	
-	def __init__(self, nick, channel):
+	def __init__(self, nick, real, user, channel):
 		self.nickname = nick
+		self.realname = real
+		self.username = user
 		self.channel = channel
 		self.known_users = dict({})
 
@@ -90,6 +92,8 @@ class BridgeBot(irc.IRCClient):
 							"* %s %s" % (user.split('!')[0], msg))
 	
 	def topicUpdated(self, user, channel, newTopic):
+		if(user == self.hostname):
+			return
 		self.factory.otherFactory.bot.msg(self.factory.otherFactory.bot.channel,
 							"-!- %s changed the topic of %s to: %s" % (user,channel,newTopic))
 	
@@ -100,6 +104,9 @@ class BridgeBot(irc.IRCClient):
 	#### IRC Protocol Methods
 	def irc_JOIN(self, prefix, params):
 		user = prefix.split('!')		
+		if(user[0] == self.nickname):
+			self.joined(params[0])
+			return;
 		self.whois(user[0])
 		self.factory.otherFactory.bot.msg(self.factory.otherFactory.bot.channel,
 							"-!- %s [%s] has joined %s" % (user[0],user[1], params[0]))
@@ -135,14 +142,16 @@ class BridgeBot(irc.IRCClient):
 
 class BridgeBotFactory(protocol.ClientFactory):
 
-	def __init__(self, nick, channel):
+	def __init__(self, nick, real, user, channel):
 		self.nickname = nick
+		self.realname = real
+		self.username = user
 		self.channel = channel
 		self.bot = None
 		self.otherFactory = None
 
 	def buildProtocol(self, addr):
-		b = BridgeBot(self.nickname, self.channel)
+		b = BridgeBot(self.nickname, self.realname, self.username, self.channel)
 		b.factory = self
 		self.bot = b
 		return b
@@ -158,6 +167,8 @@ class BridgeBotFactory(protocol.ClientFactory):
 if __name__ == '__main__':
 
 	nick = 'twistedguyonirc'
+	real = 'twisted'
+	user = 'twisted'
 	chan1 = '#chaosdata'
 	chan2 = '#anime'
 	server1 = 'irc.freenode.net'
@@ -165,8 +176,8 @@ if __name__ == '__main__':
 	port1 = 6697
 	port2 = 6697
 
-	botfac1 = BridgeBotFactory(nick, chan1)
-	botfac2 = BridgeBotFactory(nick, chan2)
+	botfac1 = BridgeBotFactory(nick,real,user, chan1)
+	botfac2 = BridgeBotFactory(nick,real,user, chan2)
 
 	botfac1.otherFactory = botfac2
 	botfac2.otherFactory = botfac1

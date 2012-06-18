@@ -1,5 +1,5 @@
 
-def validChan(chan):
+def parseChan(chan):
 	if( (chan.find('\x07')!=-1) or (chan.find(' ')!=-1) or (chan.find(',')!=-1) or (chan.find(':')!=-1) ):
 		return [False]
 	if(chan[0] not in ['&','#','+','!']):
@@ -11,4 +11,4 @@ if __name__=='__main__':
 	import sys
 	cargs = parseArgs(sys.argv[1:])
 	print cargs
-	print validChan(cargs.chan1)
+	print parseChan(cargs.chan1)
